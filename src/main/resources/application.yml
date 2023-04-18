@@ -1,0 +1,43 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+      show-components: always
+
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+spring:
+  application:
+    name: books-gateway
+  main:
+    allow-bean-definition-overriding: true
+okta:
+  oauth2:
+    issuer: https://dev-29396893.okta.com/oauth2/default
+    audience: api://default
+    client-id: 0oa951c1afWqAzegd5d7
+    client-secret: KEAYFi-nlIWPwqnk2bqOYMJjMOpd7dNUwODX5UA0
+    scopes: openid, profile, email, offline_access
+
+
+
+
